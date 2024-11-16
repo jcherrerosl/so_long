@@ -3,10 +3,11 @@ NAME = so_long
 
 # Compilador y flags
 CC = gcc
-CFLAGS = 
+CFLAGS = -fsanitize=address -g3
 
 # Archivos fuente
 SRCS = check_map.c  check_path.c  count_elements.c  load_map.c  so_long.c \
+		draw_map.c move_player.c  \
 
 # Archivos objeto
 OBJS = $(SRCS:.c=.o)

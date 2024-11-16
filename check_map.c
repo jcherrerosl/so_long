@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:05:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/16 03:31:53 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:21:24 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ int	check_rectangular(char **map)
 	return (1);
 }
 
+void trim_newline(char *str)
+{
+    int len = ft_strlen(str);
+
+    if (str[len - 1] == '\n')
+        str[len - 1] = '\0';
+}
+
 int check_walls(char **map)
 {
     int i;
@@ -51,16 +59,18 @@ int check_walls(char **map)
     int rows;
 
     rows = ft_countrows(map);
+    trim_newline(map[0]);
+    trim_newline(map[rows - 1]);
     i = 0;
     len = ft_strlen(map[0]);
-    while (map[i][0])
+    while (map[i])
     {
         if (map[i][0] != '1' || map[i][len - 1] != '1')
             return (0);
         i++;
     }
-    i = 0;
-    while (map[0][i])
+	i = 0;
+    while (map[0][i] && map[rows - 1][i])
     {
         if (map[0][i] != '1' || map[rows - 1][i] != '1')
             return (0);
@@ -68,6 +78,7 @@ int check_walls(char **map)
     }
     return (1);
 }
+
 
 
 int	check_elements(char **map)
