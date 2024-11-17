@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:24 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/16 16:11:37 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:59:51 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**load_lines(int fd, int line_count)
 	map[i] = NULL;
 	return (map);
 }
-char	**load_map(char *file)
+char	**load_map(char *file, t_game *game)
 {
 	int		fd;
 	char	**map;
@@ -58,6 +58,8 @@ char	**load_map(char *file)
 	if (fd < 0)
 		return (NULL);
 	map = load_lines(fd, line_count);
+	game->map_width = ft_strlen(map[0]) - 1;
+	game->map_height = line_count;
 	close(fd);
 	return (map);
 }

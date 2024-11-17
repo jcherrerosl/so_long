@@ -6,33 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:21:35 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 18:17:32 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/17 21:13:58 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	load_images(t_game *game)
-{
-	game->img_wall = mlx_xpm_file_to_image(game->mlx, "img/stone_water.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_floor = mlx_xpm_file_to_image(game->mlx, "img/tile_water.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_exit_open = mlx_xpm_file_to_image(game->mlx, "img/exit_open.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_exit_closed = mlx_xpm_file_to_image(game->mlx,
-			"img/exit_closed.xpm", &game->tile_size, &game->tile_size);
-	game->img_player_front = mlx_xpm_file_to_image(game->mlx, "img/front.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_player_back = mlx_xpm_file_to_image(game->mlx, "img/back.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_player_left = mlx_xpm_file_to_image(game->mlx, "img/left.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_player_right = mlx_xpm_file_to_image(game->mlx, "img/right.xpm",
-			&game->tile_size, &game->tile_size);
-	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"img/collectible.xpm", &game->tile_size, &game->tile_size);
-}
 
 void	draw_player(t_game *game, char tile, int x, int y)
 {
@@ -53,6 +31,24 @@ void	draw_player(t_game *game, char tile, int x, int y)
 	else if (game->player_direction == DIRECTION_RIGHT)
 		mlx_put_image_to_window(game->mlx, game->win, game->img_player_right,
 			draw_x, draw_y);
+}
+
+void	draw_collectibles(t_game *game, char tile, int x, int y)
+{
+	int	draw_x;
+	int	draw_y;
+
+	draw_x = (x - game->camera_x) * TILE_SIZE;
+	draw_y = (y - game->camera_y) * TILE_SIZE;
+	if (tile == 'C')
+	{
+		if (game->moves % 2 == 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_collectible,
+				draw_x, draw_y);
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->img_collectible2,
+				draw_x, draw_y);
+	}
 }
 
 void	draw_exit(t_game *game, char tile, int x, int y)
@@ -86,16 +82,18 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 		if (tile == '1')
 			mlx_put_image_to_window(game->mlx, game->win, game->img_wall,
 				draw_x, draw_y);
-		else if (tile == '0')
-			mlx_put_image_to_window(game->mlx, game->win, game->img_floor,
+		else if (tile == '0' && game->moves % 2 == 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_floor1,
+				draw_x, draw_y);
+		else if (tile == '0' && game->moves % 2 != 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_floor2,
 				draw_x, draw_y);
 		else if (tile == 'P')
 			draw_player(game, tile, x, y);
 		else if (tile == 'E')
 			draw_exit(game, tile, x, y);
 		else if (tile == 'C')
-			mlx_put_image_to_window(game->mlx, game->win, game->img_collectible,
-				draw_x, draw_y);
+			draw_collectibles(game, tile, x, y);
 	}
 }
 

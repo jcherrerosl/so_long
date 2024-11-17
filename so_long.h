@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:45:03 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 18:17:55 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/17 21:13:02 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@
 # include "minilibx/mlx.h"
 # include <fcntl.h>
 
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+
 # define KEY_ESC 65307
-# define KEY_EXIT 17
 
 # define TILE_SIZE 32
 
@@ -44,7 +48,8 @@ typedef struct s_game
 
 	// images
 	void	*img_wall;
-	void	*img_floor;
+	void	*img_floor1;
+	void	*img_floor2;
 	void	*img_exit_open;
 	void	*img_exit_closed;
 	void	*img_player_front;
@@ -52,6 +57,7 @@ typedef struct s_game
 	void	*img_player_left;
 	void	*img_player_right;
 	void	*img_collectible;
+	void	*img_collectible2;
 
 	int		camera_x;
 	int		camera_y;
@@ -86,12 +92,12 @@ void		free_map(char **map);
 // load_map.c
 int			count_lines(int fd);
 char		**load_lines(int fd, int line_count);
-char		**load_map(char *file);
+char		**load_map(char *file, t_game *game);
 
 // draw_map.c
-void		load_images(t_game *game);
 void		draw_tile(t_game *game, char tile, int x, int y);
 void		draw_exit(t_game *game, char tile, int x, int y);
+void		draw_collectibles(t_game *game, char tile, int x, int y);
 void		draw_player(t_game *game, char tile, int x, int y);
 void		draw_map(t_game *game);
 
@@ -99,10 +105,15 @@ void		draw_map(t_game *game);
 void		move_player(t_game *game, int *on_exit, int new_x, int new_y);
 int			key_handler(int key, t_game *game);
 
-
-int			close_window(t_game *game);
+// start_game.c
 void		start_game(t_game *game, char *file);
+void		set_window_size(t_game *game);
 void		draw_game_status(t_game *game);
 void		update_camera(t_game *game);
+
+// load_images.c
+void		load_images(t_game *game);
+
+int			close_window(t_game *game);
 
 #endif

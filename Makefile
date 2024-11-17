@@ -6,8 +6,8 @@ CC = gcc
 CFLAGS = -fsanitize=address -g3
 
 # Archivos fuente
-SRCS = check_map.c  check_path.c  count_elements.c  load_map.c  so_long.c \
-		draw_map.c move_player.c  \
+SRCS = check_map.c check_path.c count_elements.c load_map.c so_long.c \
+		draw_map.c move_player.c start_game.c load_images.c \
 
 # Archivos objeto
 OBJS = $(SRCS:.c=.o)
