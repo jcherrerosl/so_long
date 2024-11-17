@@ -6,102 +6,79 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/16 19:42:09 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/17 18:13:22 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_game *game)
+void	check_exit_conditions(t_game *game)
 {
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = game->player_x;
-	pos_y = game->player_y - 1;
-	if (game->map[pos_y][pos_x] != '1')
+	if (game->collectibles == 0
+		&& game->map[game->player_y][game->player_x] == 'E')
 	{
-		if (game->map[pos_y][pos_x] == 'C')
-			game->collectibles--;
-		game->map[game->player_y][game->player_x] = '0';
-		game->player_y = pos_y;
-		game->map[game->player_y][game->player_x] = 'P';
-		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
-		draw_map(game);
-	}
-}
-void	move_down(t_game *game)
-{
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = game->player_x;
-	pos_y = game->player_y + 1;
-	if (game->map[pos_y][pos_x] != '1')
-	{
-		if (game->map[pos_y][pos_x] == 'C')
-			game->collectibles--;
-		game->map[game->player_y][game->player_x] = '0';
-		game->player_y = pos_y;
-		game->map[game->player_y][game->player_x] = 'P';
-		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
-		draw_map(game);
+		ft_printf("You won!🥳🥳\n");
+		mlx_destroy_window(game->mlx, game->win);
+		exit(0);
 	}
 }
 
-void	move_left(t_game *game)
+void	move_player(t_game *game, int *on_exit, int new_x, int new_y)
 {
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = game->player_x - 1;
-	pos_y = game->player_y;
-	if (game->map[pos_y][pos_x] != '1')
+	if (game->map[new_y][new_x] != '1')
 	{
-		if (game->map[pos_y][pos_x] == 'C')
+		if (game->map[new_y][new_x] == 'C')
+		{
 			game->collectibles--;
-		game->map[game->player_y][game->player_x] = '0';
-		game->player_x = pos_x;
+			ft_printf("Collectibles remaining: %d\n", game->collectibles);
+		}
+		if (*on_exit == 0)
+			game->map[game->player_y][game->player_x] = '0';
+		else
+			game->map[game->player_y][game->player_x] = 'E';
+		game->player_x = new_x;
+		game->player_y = new_y;
+		if (game->map[game->player_y][game->player_x] == 'E')
+			*on_exit = 1;
+		else
+			*on_exit = 0;
+		check_exit_conditions(game);
 		game->map[game->player_y][game->player_x] = 'P';
 		game->moves++;
+		update_camera(game);
 		mlx_clear_window(game->mlx, game->win);
 		draw_map(game);
+		draw_game_status(game);
 	}
 }
 
-void	move_right(t_game *game)
-{
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = game->player_x + 1;
-	pos_y = game->player_y;
-	if (game->map[pos_y][pos_x] != '1')
-	{
-		if (game->map[pos_y][pos_x] == 'C')
-			game->collectibles--;
-		game->map[game->player_y][game->player_x] = '0';
-		game->player_x = pos_x;
-		game->map[game->player_y][game->player_x] = 'P';
-		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
-		draw_map(game);
-	}
-}
 int	key_handler(int key, t_game *game)
 {
+	static int	on_exit = 0;
+
 	if (key == KEY_UP)
-		move_up(game);
-	else if (key == KEY_DOWN)
-		move_down(game);
-	else if (key == KEY_LEFT)
-		move_left(game);
-	else if (key == KEY_RIGHT)
-		move_right(game);
-	if (key == KEY_ESC || key == KEY_EXIT)
 	{
+		game->player_direction = DIRECTION_BACK;
+		move_player(game, &on_exit, game->player_x, game->player_y - 1);
+	}
+	else if (key == KEY_DOWN)
+	{
+		game->player_direction = DIRECTION_FRONT;
+		move_player(game, &on_exit, game->player_x, game->player_y + 1);
+	}
+	else if (key == KEY_LEFT)
+	{
+		game->player_direction = DIRECTION_LEFT;
+		move_player(game, &on_exit, game->player_x - 1, game->player_y);
+	}
+	else if (key == KEY_RIGHT)
+	{
+		game->player_direction = DIRECTION_RIGHT;
+		move_player(game, &on_exit, game->player_x + 1, game->player_y);
+	}
+	if (key == KEY_ESC)
+	{
+		ft_printf("Exiting game\n");
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
