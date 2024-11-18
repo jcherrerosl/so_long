@@ -29,6 +29,13 @@ En este caso, nuestro mapa es el siguiente:
 1C0C0C0C001
 11111111111
 ```
+
+Si quieres un reto superior, ejecuta el programa con el segundo mapa, que es más enrevesado:
+```bash
+./so_long map2.ber
+```
+Este laberinto ha sido creado por @Aloik1.
+
 ### Leyenda
 
 El mapa se compone por varios elementos:   
