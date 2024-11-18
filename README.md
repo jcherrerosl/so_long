@@ -9,7 +9,7 @@ Para jugar a `so_long` es necesario tener `make` y `gcc` instalado.
 Para instalar el juego, escribiremos el siguiente comando en la terminal: 
 ```bash
 git clone https://github.com/jcherrerosl/so_long.git
-cd push_swap
+cd so_long
 make
 ```
 Esto creará un archivo ejecutable `so_long`.    
