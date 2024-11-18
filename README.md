@@ -2,6 +2,9 @@
 
 `so_long` es un juego en 2D creado con C. Consiste en mover al jugador por el mapa recogiendo los objetos y saliendo en el menor número de movimientos posible.   
 
+![gif_solong](https://github.com/user-attachments/assets/f8902a9d-42b6-4538-9435-ca57d5523136)
+
+
 ## Instalación
 
 Para jugar a `so_long` es necesario tener `make` y `gcc` instalado.   
