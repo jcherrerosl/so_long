@@ -34,7 +34,7 @@ Si quieres un reto superior, ejecuta el programa con el segundo mapa, que es má
 ```bash
 ./so_long map2.ber
 ```
-Este laberinto ha sido creado por @Aloik1.
+Este laberinto ha sido creado por [@Aloik1](https://github.com/Aloik1).
 
 ### Leyenda
 
