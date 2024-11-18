@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:21:35 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/18 12:35:03 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:13:34 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ void	draw_player(t_game *game, char tile, int x, int y)
 
 	draw_x = (x - game->camera_x) * TILE_SIZE;
 	draw_y = (y - game->camera_y) * TILE_SIZE;
-	if (game->player_direction == DIRECTION_FRONT)
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player_front,
-			draw_x, draw_y);
-	else if (game->player_direction == DIRECTION_BACK)
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player_back,
-			draw_x, draw_y);
-	else if (game->player_direction == DIRECTION_LEFT)
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player_left,
-			draw_x, draw_y);
-	else if (game->player_direction == DIRECTION_RIGHT)
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player_right,
-			draw_x, draw_y);
+	if (tile == 'P')
+	{
+		if (game->player_direction == DIRECTION_FRONT)
+			mlx_put_image_to_window(game->mlx, game->win,
+				game->img_player_front, draw_x, draw_y);
+		else if (game->player_direction == DIRECTION_BACK)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_player_back,
+				draw_x, draw_y);
+		else if (game->player_direction == DIRECTION_LEFT)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_player_left,
+				draw_x, draw_y);
+		else if (game->player_direction == DIRECTION_RIGHT)
+			mlx_put_image_to_window(game->mlx, game->win,
+				game->img_player_right, draw_x, draw_y);
+	}
 }
 
 void	draw_collectibles(t_game *game, char tile, int x, int y)
@@ -46,8 +49,8 @@ void	draw_collectibles(t_game *game, char tile, int x, int y)
 			mlx_put_image_to_window(game->mlx, game->win, game->img_collectible,
 				draw_x, draw_y);
 		else
-			mlx_put_image_to_window(game->mlx, game->win, game->img_collectible2,
-				draw_x, draw_y);
+			mlx_put_image_to_window(game->mlx, game->win,
+				game->img_collectible2, draw_x, draw_y);
 	}
 }
 
