@@ -39,11 +39,21 @@ Este laberinto ha sido creado por [@Aloik1](https://github.com/Aloik1).
 ### Leyenda
 
 El mapa se compone por varios elementos:   
-- `1`: paredes que no se pueden atravesar
-- `P`: el jugador
-- `0`: el suelo
-- `C`: los objetos coleccionables
-- `E`: la salida
+- `1`: paredes que no se pueden atravesar   
+- `P`: el jugador   
+- `0`: el suelo   
+- `C`: los objetos coleccionables    
+- `E`: la salida    
+
+### Reglas para el mapa
+
+Un mapa válido necesita cumplir con las siguientes consideraciones:   
+
+- Tiene que estar rodeado por paredes
+- Tiene que haber un solo jugador
+- Tiene que tener una sola salida
+- Tiene que haber, al menos, un coleccionable
+- El resto del mapa puede alternar entre suelo y paredes, pero tiene que existir un camino válido, esto es, que todos los objetos coleccionables puedan ser recogidos y que sea posible salir.   
 
 ### Controles
 
