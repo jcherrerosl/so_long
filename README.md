@@ -29,6 +29,10 @@ En este caso, nuestro mapa es el siguiente:
 1C0C0C0C001
 11111111111
 ```
+que se ve así:
+
+![image](https://github.com/user-attachments/assets/3f4f7e86-ec49-4fa8-8c0a-70a57f735409)
+
 
 Si quieres un reto superior, ejecuta el programa con el segundo mapa, que es más enrevesado:
 ```bash
