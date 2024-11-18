@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 20:59:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:26:05 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	move_player(t_game *game, int *on_exit, int new_x, int new_y)
 			*on_exit = 0;
 		check_exit_conditions(game);
 		game->map[game->player_y][game->player_x] = 'P';
-		game->moves++; // Ensure this line exists to increment move count
+		game->moves++;
 		ft_printf("Moves: %d\n", game->moves);
 		update_camera(game);
 		mlx_clear_window(game->mlx, game->win);
