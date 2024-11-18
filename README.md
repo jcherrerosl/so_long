@@ -64,3 +64,6 @@ Un mapa válido necesita cumplir con las siguientes consideraciones:
 Las teclas utilizadas en el proyecto para mover al personaje son tanto WASD como las flechas direccionales.   
 Pulsar la tecla ESC o darle a la X, cierra la ventana. 
 
+## Agradecimientos
+
+Los sprites de este juego han sido obtenidos de [The Spriters Resource](www.spriters-resource.com), concretamente de los creadores Hoeloe, FrenchOrange y redblueyellow. 
