@@ -19,7 +19,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 FT_PRINTF_DIR = libft/ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
-MLX_DIR = minilibx
+MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 
 # Librerías necesarias

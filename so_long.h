@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:45:03 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/18 12:35:07 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:06:33 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "libft/libft.h"
-# include "minilibx/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 
 # define KEY_W 119
