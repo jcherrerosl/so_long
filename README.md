@@ -66,4 +66,4 @@ Pulsar la tecla ESC o darle a la X, cierra la ventana.
 
 ## Agradecimientos
 
-Los sprites de este juego han sido obtenidos de [The Spriters Resource](www.spriters-resource.com), concretamente de los creadores Hoeloe, FrenchOrange y redblueyellow. 
+Los sprites de este juego han sido obtenidos de [The Spriter's Resource](https://www.spriters-resource.com), concretamente de los creadores Hoeloe, FrenchOrange y redblueyellow. 
