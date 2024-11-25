@@ -6,11 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:05:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/18 14:13:12 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:20:37 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	check_extension(char *file)
 {

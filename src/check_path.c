@@ -6,11 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:25:35 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/16 03:08:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:20:37 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 char	**duplicate_map(char **map)
 {

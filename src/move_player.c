@@ -6,11 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/18 12:26:05 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:28:28 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	check_exit_conditions(t_game *game)
 {

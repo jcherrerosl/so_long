@@ -6,11 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 19:54:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 20:58:46 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:28:51 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	start_game(t_game *game, char *file)
 {

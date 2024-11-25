@@ -1,52 +1,56 @@
 NAME = so_long
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
-SRCS = check_map.c check_path.c count_elements.c load_map.c so_long.c \
-		draw_map.c move_player.c start_game.c load_images.c \
-
-
-OBJS = $(SRCS:.c=.o)
-
+SRC_DIR = src
+BUILD_DIR = build
+INCLUDE_DIR = include
 LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
-
-FT_PRINTF_DIR = libft/ft_printf
-FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
-
 MLX_DIR = minilibx-linux
-MLX = $(MLX_DIR)/libmlx.a
+ASSETS_DIR = assets/img
 
+INCLUDE = -I$(INCLUDE_DIR) -I$(LIBFT_DIR)
 
-LIBS = -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -lXext -lX11 -lm
+SRCS = $(SRC_DIR)/so_long.c \
+       $(SRC_DIR)/move_player.c \
+       $(SRC_DIR)/load_map.c \
+       $(SRC_DIR)/count_elements.c \
+       $(SRC_DIR)/check_map.c \
+       $(SRC_DIR)/check_path.c \
+       $(SRC_DIR)/load_images.c \
+       $(SRC_DIR)/draw_map.c \
+       $(SRC_DIR)/start_game.c
 
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-all: $(NAME)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX) $(FT_PRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
+MLX_LIB = -L$(MLX_DIR) -lmlx
+LIBFT_LIB = -L$(LIBFT_DIR) -lft
+X11_LIB = -lXext -lX11 -lm
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+# Add the following line to disable implicit rules that might create .o files in src
+.SUFFIXES:
 
-$(FT_PRINTF):
-	make -C $(FT_PRINTF_DIR)
+$(NAME): libft/libft.a libft/ft_printf/libftprintf.a minilibx-linux/libmlx.a $(OBJS)
+	$(CC) $(OBJS) -o $(NAME) $(MLX_LIB) $(LIBFT_LIB) -Llibft/ft_printf -lftprintf $(X11_LIB)
 
-$(MLX):
-	make -C $(MLX_DIR)
+libft/libft.a:
+	$(MAKE) -C $(LIBFT_DIR)
+
+libft/ft_printf/libftprintf.a:
+	$(MAKE) -C $(LIBFT_DIR)/ft_printf
+
+minilibx-linux/libmlx.a:
+	$(MAKE) -C $(MLX_DIR)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	make clean -C $(LIBFT_DIR)
-	make clean -C $(FT_PRINTF_DIR)
-	make clean -C $(MLX_DIR)
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(LIBFT_DIR)
-	make fclean -C $(FT_PRINTF_DIR)
-	make fclean -C $(MLX_DIR)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re: fclean $(NAME)

@@ -6,11 +6,13 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:24 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 20:59:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:28:27 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
+
+// #include <stdio.h> // Add for debugging
 
 int	count_lines(int fd)
 {
@@ -25,6 +27,7 @@ int	count_lines(int fd)
 	}
 	return (line_count);
 }
+
 char	**load_lines(int fd, int line_count)
 {
 	char	**map;
@@ -43,6 +46,7 @@ char	**load_lines(int fd, int line_count)
 	map[i] = NULL;
 	return (map);
 }
+
 char	**load_map(char *file, t_game *game)
 {
 	int		fd;
@@ -58,6 +62,10 @@ char	**load_map(char *file, t_game *game)
 	if (fd < 0)
 		return (NULL);
 	map = load_lines(fd, line_count);
+	if (!map)
+	{
+		return (NULL);
+	}
 	game->map_width = ft_strlen(map[0]) - 1;
 	game->map_height = line_count;
 	close(fd);

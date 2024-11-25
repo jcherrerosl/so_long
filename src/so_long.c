@@ -6,11 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:10 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/17 20:59:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:28:57 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	close_window(t_game *game)
 {
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		ft_printerror("Usage: ./so_long map.ber\n");
+		ft_printerror("Usage: ./so_long <map.ber>\n");
 	start_game(&game, argv[1]);
 	mlx_key_hook(game.win, key_handler, &game);
 	mlx_hook(game.win, 17, 0, close_window, &game);
