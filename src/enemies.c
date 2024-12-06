@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:21:11 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 22:55:52 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 23:09:06 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ void	place_enemies(t_game *game, char **map)
 		}
 		y++;
 	}
+}
+
+void	ft_die(t_game *game)
+{
+	ft_printf("You died! ☠️\n");
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
 }

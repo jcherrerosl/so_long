@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 22:52:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 23:10:11 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,4 @@ int	key_handler(int key, t_game *game)
 		exit(0);
 	}
 	return (0);
-}
-
-void	ft_die(t_game *game)
-{
-	ft_printf("You died! ☠️\n");
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
 }
