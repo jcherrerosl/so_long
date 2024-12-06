@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 19:54:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 11:38:27 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:49:26 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	start_game(t_game *game, char *file)
 	game->map = load_map(file, game);
 	if (!game->map)
 		ft_printerror("Error loading map\n");
-	check_map(game->map, file);
+	if (!find_player(game->map, &game->player_x, &game->player_y))
+		ft_printerror("No player found\n");
 	place_enemies(game, game->map);
+	check_map(game->map, file);
 	game->mlx = mlx_init();
 	set_window_size(game);
 	game->win = mlx_new_window(game->mlx, game->window_width,
 			game->window_height, "so_long");
-	if (!find_player(game->map, &game->player_x, &game->player_y))
-		ft_printerror("No player found\n");
 	game->collectibles = count_collectibles(game->map);
 	game->moves = 0;
 	game->tile_size = TILE_SIZE;
@@ -43,10 +43,10 @@ void	set_window_size(t_game *game)
 
 	window_width = game->map_width * TILE_SIZE;
 	window_height = game->map_height * TILE_SIZE;
-	if (window_width > 800)
-		window_width = 800;
-	if (window_height > 600)
-		window_height = 600;
+	if (window_width > 1200)
+		window_width = 1200;
+	if (window_height > 900)
+		window_height = 900;
 	game->window_width = window_width;
 	game->window_height = window_height;
 }

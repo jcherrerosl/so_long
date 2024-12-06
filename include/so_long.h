@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:45:03 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 11:44:21 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 21:52:13 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define KEY_ESC 65307
 
-# define TILE_SIZE 32
+# define TILE_SIZE 96
 
 # define DIRECTION_FRONT 0
 # define DIRECTION_BACK 1

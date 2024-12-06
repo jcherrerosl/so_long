@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:25:35 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 12:15:04 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:24:16 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ char	**duplicate_map(char **map)
 void	flood_fill(char **map, int x, int y)
 {
 	if (x < 0 || y < 0 || !map[y] || !map[y][x] || map[y][x] == '1'
-		|| map[y][x] == 'V' || map[y][x] == 'X')
+		|| map[y][x] == 'V')
+		return ;
+	if (map[y][x] == 'X')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y);
