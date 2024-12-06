@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:24 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:56:31 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:20:24 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	count_lines(int fd)
 	int		line_count;
 	char	*line;
 
+	line = get_next_line(fd);
 	line_count = 0;
 	while (line)
 	{
@@ -35,6 +36,7 @@ char	**load_lines(int fd, int line_count)
 	int		i;
 	char	*line;
 
+	line = get_next_line(fd);
 	map = malloc((line_count + 1) * sizeof(char *));
 	i = 0;
 	if (!map)

@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:45:03 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:57:10 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:44:21 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char		**load_map(char *file, t_game *game);
 // draw_map.c
 void		draw_tile(t_game *game, char tile, int x, int y);
 void		draw_exit(t_game *game, char tile, int x, int y);
-void		draw_collectibles(t_game *game, char tile, int x, int y);
+void		draw_coll_enemies(t_game *game, char tile, int x, int y);
 void		draw_player(t_game *game, char tile, int x, int y);
 void		draw_map(t_game *game);
 
@@ -107,6 +107,7 @@ void		draw_map(t_game *game);
 void		move_player(t_game *game, int *on_exit, int new_x, int new_y);
 void		handle_movement(int key, t_game *game, int *on_exit);
 int			key_handler(int key, t_game *game);
+void		ft_die(t_game *game);
 
 // start_game.c
 void		start_game(t_game *game, char *file);

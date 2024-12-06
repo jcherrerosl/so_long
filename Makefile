@@ -1,9 +1,7 @@
-# Variables principales
 NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-# Directorios
 SRC_DIR = src
 BUILD_DIR = build
 INCLUDE_DIR = include
@@ -11,14 +9,12 @@ LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
 ASSETS_DIR = assets/img
 
-# Inclusiones y librerías
 INCLUDE = -I$(INCLUDE_DIR) -I$(LIBFT_DIR)
 MLX_LIB = -L$(MLX_DIR) -lmlx
 LIBFT_LIB = -L$(LIBFT_DIR) -lft
 X11_LIB = -lXext -lX11 -lm
 LIBS = $(MLX_LIB) $(LIBFT_LIB) -L$(LIBFT_DIR)/ft_printf -lftprintf $(X11_LIB)
 
-# Archivos fuente y objetos
 SRCS = $(SRC_DIR)/so_long.c \
        $(SRC_DIR)/move_player.c \
        $(SRC_DIR)/load_map.c \
@@ -33,7 +29,6 @@ SRCS = $(SRC_DIR)/so_long.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-# Reglas principales
 $(NAME): $(OBJS) libft/libft.a libft/ft_printf/libftprintf.a minilibx-linux/libmlx.a
 	@echo "Building the executable $(NAME)..."
 	$(CC) $(OBJS) -o $(NAME) $(LIBS) -pie
@@ -56,7 +51,6 @@ minilibx-linux/libmlx.a:
 	@echo "Building MiniLibX library..."
 	$(MAKE) -C $(MLX_DIR)
 
-# Reglas de limpieza
 clean:
 	@echo "Cleaning object files and build directory..."
 	rm -rf $(BUILD_DIR)
@@ -74,5 +68,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-# Desactivar sufijos implícitos
 .SUFFIXES:

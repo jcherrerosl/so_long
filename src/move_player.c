@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:57:48 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:27:50 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	move_player(t_game *game, int *on_exit, int new_x, int new_y)
 	{
 		if (game->map[new_y][new_x] == 'C')
 			game->collectibles--;
+		if (game->map[new_y][new_x] == 'X')
+			ft_die(game);
 		if (*on_exit == 0)
 			game->map[game->player_y][game->player_x] = '0';
 		else
@@ -85,11 +87,12 @@ int	key_handler(int key, t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
-	if (game->map[game->player_y][game->player_x] == 'X')
-	{
-		ft_printf("You lost!😭😭\n");
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
-	}
 	return (0);
+}
+
+void	ft_die(t_game *game)
+{
+	ft_printf("You lost!😭😭\n");
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
 }
