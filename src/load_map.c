@@ -6,13 +6,11 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:24 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:30:32 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:56:31 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-// #include <stdio.h> // Add for debugging
 
 int	count_lines(int fd)
 {
@@ -26,6 +24,8 @@ int	count_lines(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (line_count == 0)
+		ft_printerror("Empty file\n");
 	return (line_count);
 }
 

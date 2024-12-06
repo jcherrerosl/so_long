@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:45:03 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:40:38 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:57:10 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void		move_player(t_game *game, int *on_exit, int new_x, int new_y);
 void		handle_movement(int key, t_game *game, int *on_exit);
 int			key_handler(int key, t_game *game);
 
-
 // start_game.c
 void		start_game(t_game *game, char *file);
 void		set_window_size(t_game *game);
@@ -124,14 +123,13 @@ void		load_images(t_game *game);
 
 void		update_camera(t_game *game);
 void		draw_game_status(t_game *game);
-void 		place_enemies(t_game *game, char **map);
+void		place_enemies(t_game *game, char **map);
 
 // check_utils.c
 void		trim_newline(char *str);
 
 // enemies.c
 void		place_enemies(t_game *game, char **map);
-
 
 int			close_window(t_game *game);
 

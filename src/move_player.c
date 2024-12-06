@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:46:40 by juaherre          #+#    #+#             */
-/*   Updated: 2024/12/06 10:39:13 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:57:48 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	move_player(t_game *game, int *on_exit, int new_x, int new_y)
 		draw_game_status(game);
 	}
 }
+
 void	handle_movement(int key, t_game *game, int *on_exit)
 {
 	if (key == KEY_UP || key == KEY_W)
@@ -92,4 +93,3 @@ int	key_handler(int key, t_game *game)
 	}
 	return (0);
 }
-
