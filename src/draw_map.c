@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:21:35 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/25 11:29:17 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:34:26 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_player(t_game *game, char tile, int x, int y)
 	}
 }
 
-void	draw_collectibles(t_game *game, char tile, int x, int y)
+void	draw_coll_enemies(t_game *game, char tile, int x, int y)
 {
 	int	draw_x;
 	int	draw_y;
@@ -51,6 +51,15 @@ void	draw_collectibles(t_game *game, char tile, int x, int y)
 		else
 			mlx_put_image_to_window(game->mlx, game->win,
 				game->img_collectible2, draw_x, draw_y);
+	}
+	if (tile == 'X')
+	{
+		if (game->moves % 2 == 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->img_enemy1,
+				draw_x, draw_y);
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->img_enemy2,
+				draw_x, draw_y);
 	}
 }
 
@@ -83,32 +92,28 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 		&& draw_y < game->window_height)
 	{
 		if (tile == '1')
-		{
 			mlx_put_image_to_window(game->mlx, game->win, game->img_wall,
 				draw_x, draw_y);
-		}
 		else if (tile == '0' && game->moves % 2 == 0)
-		{
 			mlx_put_image_to_window(game->mlx, game->win, game->img_floor1,
 				draw_x, draw_y);
-		}
 		else if (tile == '0' && game->moves % 2 != 0)
-		{
 			mlx_put_image_to_window(game->mlx, game->win, game->img_floor2,
 				draw_x, draw_y);
-		}
 		else if (tile == 'P')
 			draw_player(game, tile, x, y);
 		else if (tile == 'E')
 			draw_exit(game, tile, x, y);
-		else if (tile == 'C')
-			draw_collectibles(game, tile, x, y);
+		else if (tile == 'C' || tile == 'X')
+			draw_coll_enemies(game, tile, x, y);
 	}
 }
 
 void	draw_map(t_game *game)
 {
-	int i, j;
+	int	i;
+	int	j;
+
 	i = 0;
 	while (game->map[i])
 	{

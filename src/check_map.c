@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:05:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/25 11:20:37 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:35:36 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@ int	check_rectangular(char **map)
 		i++;
 	}
 	return (1);
-}
-
-void	trim_newline(char *str)
-{
-	int	len;
-
-	len = ft_strlen(str);
-	if (str[len - 1] == '\n')
-		str[len - 1] = '\0';
 }
 
 int	check_walls(char **map)

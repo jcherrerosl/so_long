@@ -17,7 +17,9 @@ SRCS = $(SRC_DIR)/so_long.c \
        $(SRC_DIR)/check_path.c \
        $(SRC_DIR)/load_images.c \
        $(SRC_DIR)/draw_map.c \
-       $(SRC_DIR)/start_game.c
+       $(SRC_DIR)/start_game.c \
+	   $(SRC_DIR)/enemies.c \
+	   $(SRC_DIR)/check_utils.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
@@ -49,8 +51,13 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	rm -rf $(BUILD_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR)/ft_printf clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR)/ft_printf fclean
 
 re: fclean $(NAME)

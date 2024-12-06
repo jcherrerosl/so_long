@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 19:54:59 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/25 11:28:51 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:35:05 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	start_game(t_game *game, char *file)
 	if (!game->map)
 		ft_printerror("Error loading map\n");
 	check_map(game->map, file);
+	place_enemies(game, game->map);
 	game->mlx = mlx_init();
-    set_window_size(game);
+	set_window_size(game);
 	game->win = mlx_new_window(game->mlx, game->window_width,
 			game->window_height, "so_long");
 	if (!find_player(game->map, &game->player_x, &game->player_y))
@@ -35,19 +36,19 @@ void	start_game(t_game *game, char *file)
 	draw_map(game);
 }
 
-void    set_window_size(t_game *game)
+void	set_window_size(t_game *game)
 {
-    int window_width;
-    int window_height;
+	int	window_width;
+	int	window_height;
 
-    window_width = game->map_width * TILE_SIZE;
-    window_height = game->map_height * TILE_SIZE;
-    if (window_width > 800)
-        window_width = 800;
-    if (window_height > 600)
-        window_height = 600;
-    game->window_width = window_width;
-    game->window_height = window_height;
+	window_width = game->map_width * TILE_SIZE;
+	window_height = game->map_height * TILE_SIZE;
+	if (window_width > 800)
+		window_width = 800;
+	if (window_height > 600)
+		window_height = 600;
+	game->window_width = window_width;
+	game->window_height = window_height;
 }
 
 void	update_camera(t_game *game)

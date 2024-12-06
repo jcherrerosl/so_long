@@ -6,7 +6,7 @@
 /*   By: juaherre <juaherre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 02:51:24 by juaherre          #+#    #+#             */
-/*   Updated: 2024/11/25 11:28:27 by juaherre         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:30:32 by juaherre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	count_lines(int fd)
 	char	*line;
 
 	line_count = 0;
-	while ((line = get_next_line(fd)))
+	while (line)
 	{
 		line_count++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (line_count);
 }
@@ -38,10 +39,11 @@ char	**load_lines(int fd, int line_count)
 	i = 0;
 	if (!map)
 		return (NULL);
-	while ((line = get_next_line(fd)))
+	while (line)
 	{
 		map[i] = line;
 		i++;
+		line = get_next_line(fd);
 	}
 	map[i] = NULL;
 	return (map);
